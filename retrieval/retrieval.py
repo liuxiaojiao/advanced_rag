@@ -84,38 +84,3 @@ def dedup_docs(docs):
             seen.add(key)
             out.append(doc)
     return out
-
-
-
-
-
-    #     # step 1: embedding similarity search
-    #     vec_results = vectorstore.similarity_search_with_score(q, k) 
-    #     coarse_top_chunks = [doc for doc, _ in vec_results]
-
-    #     if not coarse_top_chunks:
-    #         return []
-
-    #     # step 2: BGE cross-encoder reranker
-    #     reranked = reranker.rerank(q, coarse_top_chunks, top_n=top_n)
-
-    #     # step 3: neighbor expansion
-    #     for doc in reranked:
-    #         key = (doc.metadata["source"], doc.metadata["chunk_number"])
-    #         current_index = index_map.get(key)
-
-    #         if current_index is None:
-    #             continue
-
-    #         start = max(0, current_index - window_size)
-    #         end = min(len(chunks), current_index + window_size + 1)
-
-    #         for i in range(start, end):
-    #             ck = chunks[i]
-    #             ck_key = (ck.metadata["source"], ck.metadata["chunk_number"])
-
-    #             if ck_key not in seen:
-    #                 final_results.append(ck)
-    #                 seen.add(ck_key)
-
-    # return final_results
